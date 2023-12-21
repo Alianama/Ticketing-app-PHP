@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "bookshelf";
+$database = "ticketingdb";
 
 
 $conn = mysqli_connect($servername, $username, $password, $database);
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if  ($Kerusakan == '' || $Name == '') {
         echo "<script type='text/javascript'>alert('Legkapi data nya woy!!');</script>";
         exit();
-    } else $sql = "INSERT INTO `book` (`name`, `kerusakan`, `date_update`) VALUES ('$Name', '$Kerusakan', '$dateUpdate')";
+    } else $sql = "INSERT INTO `ticket` (`name`, `kerusakan`, `date_update`) VALUES ('$Name', '$Kerusakan', '$dateUpdate')";
 
     
     
@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="belum-dikerjakan" id="belum-dikerjakan">
                 <h3>Belum Dikerjakan</h3>
                 <?php
-                $selectQuery = "SELECT * FROM `book` WHERE `complete` = '0'";
+                $selectQuery = "SELECT * FROM `ticket` WHERE `complete` = '0'";
                 $result = $conn->query($selectQuery);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
@@ -87,6 +87,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="sudah-dikerjakan" id="sudah-dikerjakan">
                 <h3>Sudah Dikerjakan</h3>
+                <?php
+                $selectQuery = "SELECT * FROM `ticket` WHERE `complete` = '1'";
+                $result = $conn->query($selectQuery);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<div class='item-list' id='" . $row["id"] . "'>" . "<h1>" . $row["name"] . "</h1> " . "<h1>" . $row["kerusakan"] . "</h1> " . "<h1>" . $row["date_update"] . "</h1> " . "</div>" .
+                         "<div class='actions'> " . "<button>" . "</button>" . " </div>";
+
+                }
+            } else {
+                echo "Tidak ada list Ticket";
+            }
+            ?>
+
 
             </div>
         </div>

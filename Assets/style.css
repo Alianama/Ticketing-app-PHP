@@ -166,3 +166,7 @@ main {
   gap: 10px;
   padding: 10px;
 }
+.sudah-dikerjakan div h1 {
+  font-size: 14px;
+  margin: 0;
+}
