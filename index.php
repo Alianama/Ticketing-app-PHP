@@ -1,44 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "ticketingdb";
+require('koneksi.php')
 
-
-$conn = mysqli_connect($servername, $username, $password, $database);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $Name = $_POST["name"];
-    $Kerusakan = $_POST["kerusakan"];
-    $dateUpdate = $_POST["tanggal"];
-    
-    if  ($Kerusakan == '' || $Name == '') {
-        echo "<script type='text/javascript'>alert('Legkapi data nya woy!!');</script>";
-        exit();
-    } else $sql = "INSERT INTO `ticket` (`name`, `kerusakan`, `date_update`) VALUES ('$Name', '$Kerusakan', '$dateUpdate')";
-
-    
-    
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-
-        
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit();
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-}
-
-    
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $result = $conn->query($selectQuery);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<div class='item-list' id='" . $row["id"] . "'>" . "<h1>" . $row["name"] . "</h1> " . "<h1>" . $row["kerusakan"] . "</h1> " . "<h1>" . $row["date_update"] . "</h1> " . "</div>";
+                        echo "<div class='item-list' id='" . $row["id"] . "'>" . "<h1>" . $row["name"] . "</h1> " . "<h1>" . $row["kerusakan"] . "</h1> " . "<h1>" . $row["date_update"] . "</h1> " . "<div class='actions'> " . "<button>" . "</button>" . " </div>" . "</div>";
 
                 }
             } else {
@@ -92,8 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $result = $conn->query($selectQuery);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<div class='item-list' id='" . $row["id"] . "'>" . "<h1>" . $row["name"] . "</h1> " . "<h1>" . $row["kerusakan"] . "</h1> " . "<h1>" . $row["date_update"] . "</h1> " . "</div>" .
-                         "<div class='actions'> " . "<button>" . "</button>" . " </div>";
+                        echo "<div class='item-list' id='" . $row["id"] . "'>" . "<h1>" . $row["name"] . "</h1> " . "<h1>" . $row["kerusakan"] . "</h1> " . "<h1>" . $row["date_update"] . "</h1> " . "<div class='actions'> " . "<button>" . "</button>" . " </div>" . "</div>";   
 
                 }
             } else {
