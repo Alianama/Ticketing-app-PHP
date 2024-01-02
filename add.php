@@ -1,4 +1,5 @@
 <?php 
+ ob_start();
 
 $htmlContent = "
 <!DOCTYPE html>
@@ -8,6 +9,19 @@ $htmlContent = "
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Document</title>
     <style>
+    body{
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .title {
+        display; flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
     .success-checkmark {
         width: 80px;
         height: 115px;
@@ -94,6 +108,8 @@ $htmlContent = "
                 transform: rotate(-45deg);
                 background-color: #FFFFFF;
             }
+
+            
         }
     }
 
@@ -182,10 +198,12 @@ $htmlContent = "
             <div class='icon-circle'></div>
             <div class='icon-fix'></div>
         </div>
+        
     </div>
-    <h1>
-        Add Ticket Succesfully
-    </h1>
+    <h1 class='title'>
+            Add Ticket Succesfully
+        </h1>
+    
 </body>
 </html>
 ";
