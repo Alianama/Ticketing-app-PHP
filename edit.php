@@ -1,41 +1,46 @@
 <?php
 require('koneksi.php');
 
-// Check if 'id' is set in POST data
-if(isset($_POST['id'])) {
-    // Sanitize the input to prevent SQL injection
-    $id = intval($_POST['id']);
+if (isset($_POST['edit'])) {
+    $id = $_POST['id'];
 
-    // Prepare the query using a parameterized statement
-    $query = "UPDATE FROM ticket WHERE id = ? LIMIT 1";
-    $stmt = $conn->prepare($query);
-    
-    // Bind the parameter
-    $stmt->bind_param("i", $id);
-    
-    // Execute the query
-    $stmt->execute();
-    
-    // Check if the deletion was successful
-    if ($stmt->affected_rows > 0) {
-        // Deletion successful
-        echo '<strong>Contact Has Been Deleted</strong><br /><br />';
-        
-        // Redirect to index.php after a short delay (change the delay as needed)
-        header("refresh:0.5; url=index.php");
-        exit(); // Ensure that the script stops execution after the redirection
+    // Fetch data based on ID
+    $selectQuery = "SELECT * FROM `ticket` WHERE `id` = $id";
+    $result = $conn->query($selectQuery);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $name = $row['name'];
+        $kerusakan = $row['kerusakan'];
+        $tanggal = $row['date_update'];
     } else {
-        // Deletion failed
-        echo '<strong>Deletion Failed</strong><br /><br />';
+        // Handle error or redirect to appropriate page
+        echo "Ticket not found!";
+        exit;
     }
-    
-    // Close the statement
-    $stmt->close();
 } else {
-    // 'id' not set in POST data
-    echo '<strong>Invalid Request</strong><br /><br />';
+    // Handle error or redirect to appropriate page
+    echo "Invalid request!";
+    exit;
 }
 
-// Close the database connection
+// Process the form submission for updating data
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $newName = $_POST['new_name'];
+    $newKerusakan = $_POST['new_kerusakan'];
+    $newTanggal = $_POST['new_tanggal'];
+
+    // Update data in the database
+    $updateQuery = "UPDATE `ticket` SET `name`='$newName', `kerusakan`='$newKerusakan', `date_update`='$newTanggal' WHERE `id` = $id";
+    if ($conn->query($updateQuery) === TRUE) {
+        // Redirect to the main page or a success page
+        header("Location: index.php");
+        exit;
+    } else {
+        // Handle error
+        echo "Error updating record: " . $conn->error;
+    }
+}
+
 $conn->close();
 ?>

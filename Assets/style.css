@@ -186,3 +186,75 @@ main {
   gap: 10px;
   justify-content: end;
 }
+
+/* Modal Delete */
+.delete-modal {
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #00000099;
+  color: #00000099;
+  position: absolute;
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.delete-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #3a4d39;
+  width: 40%;
+  height: 20%;
+  border-radius: 10px;
+}
+.delete-container h1 {
+  color: white !important;
+  font-size: 24px;
+}
+.action-delete {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.action-delete button {
+  border: none;
+  color: #4f6f52;
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 7px;
+}
+.action-delete button:active {
+  transform: scale(1.1);
+}
+.action-delete button:hover {
+  transform: scale(1.1);
+}
+
+#cancel-delete {
+  background-color: green;
+  color: white !important;
+}
+#yes-delete {
+  background-color: red;
+  color: white !important;
+}
+
+/* edit form */
+.edit-form {
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #00000099;
+  color: #00000099;
+  position: absolute;
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}

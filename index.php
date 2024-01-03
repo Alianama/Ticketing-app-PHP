@@ -41,18 +41,12 @@ require('koneksi.php')
                     while ($row = $result->fetch_assoc()) {
                         
                         echo "<div class='item-list' id='" . $row["id"] . "'>" .
-                            "<h1>" . $row["name"] . "</h1> " .
-                            "<h1>" . $row["kerusakan"] . "</h1> " .
-                            "<h1>" . $row["date_update"] . "</h1> " .
+                            "<h1 data-type='name'>" . $row["name"] . "</h1> " .
+                            "<h1 data-type='kerusakan'>" . $row["kerusakan"] . "</h1> " .
+                            "<h1 data-type='date_update'>" . $row["date_update"] . "</h1> " .
                             "<div class='actions'> " .
-                            "<form method='post' action='delete.php'>" .
-                            "<input type='hidden' name='id' value='" . $row["id"] . "'>" .
-                            "<button type='submit' class='delete-btn' name='delete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/delete.svg' alt='delete' width='30px'></button>" .
-                            "</form>" .
-                            "<form method='post' action='edit.php'>" .
-                            "<input type='hidden' name='id' value='" . $row["id"] . "'>" .
-                            "<button type='submit' class='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
-                            "</form>" .
+                            "<button type='button' class='delete-btn delete-trigger' id='delete-btn' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/delete.svg' alt='delete' width='30px'></button>" .
+                            "<button type='button' class='edit-btn' id='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
                             "<form method='post' action='complete.php'>" .
                             "<input type='hidden' name='id' value='" . $row["id"] . "'>" .
                             "<button type='submit' class='complete-btn' name='complete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/complete.svg' alt='complete' width='30px'></button>" .
@@ -75,18 +69,12 @@ require('koneksi.php')
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='item-list' id='" . $row["id"] . "'>" .
-                            "<h1>" . $row["name"] . "</h1> " .
-                            "<h1>" . $row["kerusakan"] . "</h1> " .
-                            "<h1>" . $row["date_update"] . "</h1> " .
+                            "<h1 data-type='name'>" . $row["name"] . "</h1> " .
+                            "<h1 data-type='kerusakan'>" . $row["kerusakan"] . "</h1> " .
+                            "<h1 data-type='date_update'>" . $row["date_update"] . "</h1> " .
                             "<div class='actions'> " .
-                            "<form method='post' action='delete.php'>" .
-                            "<input type='hidden' name='id' value='" . $row["id"] . "'>" .
-                            "<button type='submit' class='delete-btn' name='delete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/delete.svg' alt='delete' width='30px'></button>" .
-                            "</form>" .
-                            "<form method='post' action='edit.php'>" .
-                            "<input type='hidden' name='id' value='" . $row["id"] . "'>" .
-                            "<button type='submit' class='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
-                            "</form>" .
+                            "<button type='button' class='delete-btn delete-trigger' id='delete-btn' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/delete.svg' alt='delete' width='30px'></button>" .
+                            "<button type='button' class='edit-btn' id='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
                             "<form method='post' action='uncomplete.php'>" .
                             "<input type='hidden' name='id' value='" . $row["id"] . "'>" .
                             "<button type='submit' class='uncomplete-btn' name='uncomplete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/uncomplete.svg' alt='complete' width='30px'></button>" .
@@ -120,6 +108,28 @@ require('koneksi.php')
             <input type="date" name="tanggal" id="tanggal" required>
             <button type="submit">Submit</button>
         </form>
+    </div>
+    <div class="edit-form" id="edit-form" style="display: none;">
+        <form id="form-input" method="post" action="edit.php">
+            <label for="name">Masukan Nama</label>
+            <input type="text" name="name" id="new-name" required>
+            <label for="kerusakan">Detail kerusakan</label>
+            <input type="text" name="kerusakan" id="new-kerusakan" required>
+            <label for="tanggal">Tanggal kerusakan</label>
+            <input type="date" name="tanggal" id="new-tanggal" required>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+
+    <div class="delete-modal" id="delete-modal" style="display: none;">
+        <div class="delete-container">
+            <h1>Delete This Ticket?</h1>
+            <form class="action-delete" method="post" action="delete.php" id="delete-form">
+                <input type="hidden" name="id" id="delete-id">
+                <button type="button" id="cancel-delete">Cancel</button>
+                <button type="submit" id="yes-delete">Yes</button>
+            </form>
+        </div>
     </div>
 </body>
 
