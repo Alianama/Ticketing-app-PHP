@@ -21,13 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // delete ticket modal
   const deleteTicketModal = document.getElementById("delete-modal");
-  const deleteBtn = document.getElementById("delete-btn");
+  const deleteBtn = document.getElementsByClassName("delete-btn");
   const cancelDelete = document.getElementById("cancel-delete");
-  const yesDelete = document.getElementById("yes-delete");
   const deleteIdInput = document.getElementById("delete-id");
+  console.log(deleteBtn);
 
-  if (deleteBtn && deleteIdInput && deleteTicketModal) {
-    deleteBtn.addEventListener("click", function (event) {
+  [...deleteBtn].forEach((element) => {
+    element.addEventListener("click", function (event) {
       if (
         deleteTicketModal.style.display === "none" ||
         deleteTicketModal.style.display === ""
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "input[name='id']"
         ).value;
     });
-  }
+  });
 
   cancelDelete.addEventListener("click", function () {
     if (deleteTicketModal.style.display === "flex") {
@@ -49,14 +49,34 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // edit Button
-  const editBtn = document.getElementById("edit-btn");
+  const editBtn = document.getElementsByClassName("edit-btn");
   const editForm = document.getElementById("edit-form");
+  const editIdInput = document.getElementById("edit-id");
+  const newName = document.getElementById("new-name");
+  const newKerusakan = document.getElementById("new-kerusakan");
+  const newTanggal = document.getElementById("new-tanggal");
+  const oldName = document.getElementById("name");
 
-  editBtn.addEventListener("click", function (event) {
-    if (editForm.style.display === "none" || editForm.style.display === "") {
-      editForm.style.display = "flex";
-      console.log(event);
-    }
+  [...editBtn].forEach((element) => {
+    element.addEventListener("click", function (event) {
+      const editNameid = document.getElementById("name-" + event.target.id);
+      const editkesusakanid = document.getElementById(
+        "kerusakan-" + event.target.id
+      );
+      const edittanggalid = document.getElementById(
+        "tanggal-" + event.target.id
+      );
+      if (editForm.style.display === "none" || editForm.style.display === "") {
+        editForm.style.display = "flex";
+        editIdInput.value =
+          event.currentTarget.parentElement.querySelector(
+            "input[name='id']"
+          ).value;
+        newName.value = editNameid.innerHTML;
+        newKerusakan.value = editkesusakanid.innerHTML;
+        newTanggal.value = edittanggalid.innerHTML;
+      }
+    });
   });
 
   editForm.addEventListener("click", function (e) {
@@ -66,8 +86,4 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
-
-  const newName = document.getElementById("new-name");
-  const newKerusakan = document.getElementById("new-kerusakan");
-  const newTanggal = document.getElementById("new-tanggal");
 });

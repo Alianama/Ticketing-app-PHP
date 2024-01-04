@@ -1,4 +1,6 @@
 <?php
+ob_start();
+require('Component/component.php');
 require('koneksi.php');
 
 if(isset($_POST['id'])) {
@@ -13,8 +15,8 @@ if(isset($_POST['id'])) {
     $stmt->execute();
     
     if ($stmt->affected_rows > 0) {
-        echo '<strong>Ticket Selesai Dikerjakan</strong><br /><br />';
-        header("refresh:0.3; url=index.php");
+        echo $succesPage;
+        header("refresh:1; url=index.php");
         exit(); 
     } else {
         echo '<strong>Failed</strong><br /><br />';
