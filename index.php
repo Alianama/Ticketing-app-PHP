@@ -1,5 +1,15 @@
 <?php
-require('koneksi.php')
+require('koneksi.php');
+
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    // Redirect ke halaman login jika tidak ada sesi
+    header('Location: login.php');
+    exit;
+}
+
+$username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -133,6 +143,7 @@ require('koneksi.php')
             </form>
         </div>
     </div>
+    <a href="logout.php">Logout</a>
 </body>
 
 </html>
