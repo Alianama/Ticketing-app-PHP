@@ -1,5 +1,7 @@
 <?php
+ob_start();
 require('koneksi.php');
+require('Component/component.php');
 
 
 if(isset($_POST['id'])) {
@@ -18,7 +20,7 @@ if(isset($_POST['id'])) {
     
 
     if ($stmt->affected_rows > 0) {
-        echo '<strong>Contact Has Been Deleted</strong><br /><br />';
+        echo $succesPage;
         header("refresh:0.5; url=index.php");
         exit(); 
     } else {

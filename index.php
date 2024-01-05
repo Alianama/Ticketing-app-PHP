@@ -34,6 +34,7 @@ require('koneksi.php')
         <div class="data-menu">
             <div class="belum-dikerjakan" id="belum-dikerjakan">
                 <h3>Belum Dikerjakan</h3>
+                <a href="print.php">Print</a>
                 <?php
                 $selectQuery = "SELECT * FROM `ticket` WHERE `complete` = '0'";
                 $result = $conn->query($selectQuery);
@@ -69,15 +70,15 @@ require('koneksi.php')
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='item-list' id='" . $row["id"] . "'>" .
-                            "<h1 data-type='name'> id='name-id'"  . $row["name"] . "</h1> " .
-                            "<h1 data-type='kerusakan'>" . $row["kerusakan"] . "</h1> " .
-                            "<h1 data-type='date_update'>" . $row["date_update"] . "</h1> " .
+                        "<h1 id='name-" . $row["id"] . "' value='" . $row["name"] . "'>" . $row["name"] . "</h1>" .
+                            "<h1 id='kerusakan-" . $row["id"] . "' value='" . $row["kerusakan"] . "'>" . $row["kerusakan"] . "</h1> " .
+                            "<h1 id='tanggal-" . $row["id"] . "' value='" . $row["date_update"] . "'>" . $row["date_update"] . "</h1> " .
                             "<div class='actions'> " .
                             "<button type='button' class='delete-btn' id='delete-btn' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/delete.svg' alt='delete' width='30px'></button>" .
-                            "<button type='button' class='edit-btn' id='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
+                            "<button type='button' class='edit-btn' id='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img id='" . $row["id"] . "'  src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
                             "<form method='post' action='uncomplete.php'>" .
                             "<input type='hidden' name='id' value='" . $row["id"] . "'>" .
-                            "<button type='submit' class='uncomplete-btn' name='uncomplete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/uncomplete.svg' alt='complete' width='30px'></button>" .
+                            "<button type='submit' class='uncomplete-btn' name='uncomplete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/uncomplete.svg' alt='uncomplete' width='30px'></button>" .
                             "</form>" .
                             "</div>" .
                             "</div>";

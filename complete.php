@@ -6,8 +6,9 @@ require('koneksi.php');
 if(isset($_POST['id'])) {
     $id = intval($_POST['id']);
 
-    // Assuming you have columns named 'status' and 'completion_date'
-    $query = "UPDATE ticket SET complete = 1 WHERE id = ? LIMIT 1";
+    // Update 'complete' column to 1 and set 'date_update' to current date
+    $query = "UPDATE ticket SET complete = 1, date_update = CURRENT_DATE WHERE id = ? LIMIT 1";
+    
     $stmt = $conn->prepare($query);
     
     $stmt->bind_param("i", $id);
