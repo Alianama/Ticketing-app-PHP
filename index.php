@@ -50,7 +50,8 @@ $username = $_SESSION['username'];
             <div class="belum-dikerjakan" id="belum-dikerjakan">
                 <div class="header-list">
                     <h3>Belum Dikerjakan</h3>
-                    <a class="print-btn" href="print.php"><img src="Assets/icon/print.svg" width="30px" alt="print"></a>
+                    <a class="print-btn" href="print.php" target="blank"><img src="Assets/icon/print.svg" width="30px"
+                            alt="print"></a>
                 </div>
 
                 <?php
@@ -82,7 +83,8 @@ $username = $_SESSION['username'];
             <div class="sudah-dikerjakan" id="sudah-dikerjakan">
                 <div class="header-list">
                     <h3>Sudah Dikerjakan</h3>
-                    <a class="print-btn" href="print.php"><img src="Assets/icon/print.svg" width="30px" alt="print"></a>
+                    <a class="print-btn" href="print.php" target="blank"><img src="Assets/icon/print.svg" width="30px"
+                            alt="print"></a>
                 </div>
                 <?php
                 
