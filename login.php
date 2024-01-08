@@ -50,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
         <a href="register.php">Belum Punya akun?</a>
     </div>
+    <div class="test"></div>
 </body>
 
 </html>
