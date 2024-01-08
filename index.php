@@ -3,8 +3,9 @@ require('koneksi.php');
 
 session_start();
 
+$active_user = $_SESSION['username'];
+
 if (!isset($_SESSION['username'])) {
-    // Redirect ke halaman login jika tidak ada sesi
     header('Location: login.php');
     exit;
 }
@@ -17,7 +18,7 @@ $username = $_SESSION['username'];
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="Assets/style.css">
+    <link rel="stylesheet" href="Assets/Styles/style.css">
     <script src="Assets/script.js"></script>
     <title>Ticketing System</title>
 </head>
@@ -31,6 +32,10 @@ $username = $_SESSION['username'];
             <input type="text" name="Seacrh" id="search">
             <button type="submit"><img class="search-icon" src="Assets/Icon/serach.svg" width="20px"></button>
         </form>
+        <div class="profil">
+            <button id="profil-btn"><img id="profil-btn" class="profil-img" src="Assets/icon/profil.svg"
+                    alt=""></button>
+        </div>
     </header>
 
     <main>
@@ -43,8 +48,11 @@ $username = $_SESSION['username'];
         </div>
         <div class="data-menu">
             <div class="belum-dikerjakan" id="belum-dikerjakan">
-                <h3>Belum Dikerjakan</h3>
-                <a href="print.php">Print</a>
+                <div class="header-list">
+                    <h3>Belum Dikerjakan</h3>
+                    <a class="print-btn" href="print.php"><img src="Assets/icon/print.svg" width="30px" alt="print"></a>
+                </div>
+
                 <?php
                 $selectQuery = "SELECT * FROM `ticket` WHERE `complete` = '0'";
                 $result = $conn->query($selectQuery);
@@ -56,11 +64,11 @@ $username = $_SESSION['username'];
                             "<h1 id='kerusakan-" . $row["id"] . "' value='" . $row["kerusakan"] . "'>" . $row["kerusakan"] . "</h1> " .
                             "<h1 id='tanggal-" . $row["id"] . "' value='" . $row["date_update"] . "'>" . $row["date_update"] . "</h1> " .
                             "<div class='actions'> " .
-                            "<button type='button' class='delete-btn' id='delete-btn' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/delete.svg' alt='delete' width='30px'></button>" .
-                            "<button type='button' class='edit-btn' id='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img id='" . $row["id"] . "'  src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
+                            "<button type='button' class='action-btn delete-btn' id='delete-btn' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/delete.svg' alt='delete' width='30px'></button>" .
+                            "<button type='button' class='action-btn edit-btn' id='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img id='" . $row["id"] . "'  src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
                             "<form method='post' action='complete.php'>" .
                             "<input type='hidden' name='id' value='" . $row["id"] . "'>" .
-                            "<button type='submit' class='complete-btn' name='complete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/complete.svg' alt='complete' width='30px'></button>" .
+                            "<button type='submit' class='action-btn complete-btn' name='complete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/complete.svg' alt='complete' width='30px'></button>" .
                             "</form>" .
                             "</div>" .
                             "</div>";
@@ -72,7 +80,10 @@ $username = $_SESSION['username'];
 
             </div>
             <div class="sudah-dikerjakan" id="sudah-dikerjakan">
-                <h3>Sudah Dikerjakan</h3>
+                <div class="header-list">
+                    <h3>Sudah Dikerjakan</h3>
+                    <a class="print-btn" href="print.php"><img src="Assets/icon/print.svg" width="30px" alt="print"></a>
+                </div>
                 <?php
                 
                 $selectQuery = "SELECT * FROM `ticket` WHERE `complete` = '1'";
@@ -84,11 +95,11 @@ $username = $_SESSION['username'];
                             "<h1 id='kerusakan-" . $row["id"] . "' value='" . $row["kerusakan"] . "'>" . $row["kerusakan"] . "</h1> " .
                             "<h1 id='tanggal-" . $row["id"] . "' value='" . $row["date_update"] . "'>" . $row["date_update"] . "</h1> " .
                             "<div class='actions'> " .
-                            "<button type='button' class='delete-btn' id='delete-btn' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/delete.svg' alt='delete' width='30px'></button>" .
-                            "<button type='button' class='edit-btn' id='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img id='" . $row["id"] . "'  src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
+                            "<button type='button' class='action-btn delete-btn' id='delete-btn' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/delete.svg' alt='delete' width='30px'></button>" .
+                            "<button type='button' class='action-btn edit-btn' id='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img id='" . $row["id"] . "'  src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
                             "<form method='post' action='uncomplete.php'>" .
                             "<input type='hidden' name='id' value='" . $row["id"] . "'>" .
-                            "<button type='submit' class='uncomplete-btn' name='uncomplete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/uncomplete.svg' alt='uncomplete' width='30px'></button>" .
+                            "<button type='submit' class='action-btn uncomplete-btn' name='uncomplete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/uncomplete.svg' alt='uncomplete' width='30px'></button>" .
                             "</form>" .
                             "</div>" .
                             "</div>";
@@ -143,7 +154,18 @@ $username = $_SESSION['username'];
             </form>
         </div>
     </div>
-    <a href="logout.php">Logout</a>
+
+    <div id="profil-modal-container" class="profil-modal-container" style="display: none;">
+        <div class="profil-modal">
+            <img class="profil-image" src="Assets/icon/profil-image.svg" alt="profil">
+            <h1><?php
+                echo $active_user;
+                    ?>
+            </h1>
+            <a href="logout.php">logout<img src="Assets/icon/logout.svg" width="20px" alt=""></a>
+        </div>
+    </div>
+
 </body>
 
 </html>

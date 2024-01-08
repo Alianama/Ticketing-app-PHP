@@ -86,4 +86,25 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+
+  // Profil Modal
+
+  const profilBtn = document.getElementById("profil-btn");
+  const profilModal = document.getElementById("profil-modal-container");
+  const body = document.body;
+
+  profilBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+
+    if (getComputedStyle(profilModal).display === "none") {
+      profilModal.style.display = "flex";
+
+      const closeOnOutsideClick = function () {
+        profilModal.style.display = "none";
+        body.removeEventListener("click", closeOnOutsideClick);
+      };
+
+      body.addEventListener("click", closeOnOutsideClick);
+    }
+  });
 });

@@ -1,0 +1,360 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+header {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4f6f52;
+  margin-bottom: 20px;
+}
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.search {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search input {
+  height: 20px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border: none;
+  color: black;
+  background-color: #ece3ce;
+  outline: none;
+  padding-left: 10px;
+}
+
+.search-icon:hover {
+  transition: ease-in-out 0.5s;
+  transform: scale(1.2);
+}
+
+.search button {
+  height: 22px;
+  width: 30px;
+  color: #ece3ce;
+  background-color: #ece3ce;
+  border: none;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.profil {
+  display: flex;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.profil button {
+  background-color: #ece3ce;
+  border: none;
+  border-radius: 999px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out 0.1s;
+}
+.profil button:active {
+  transform: scale(1.2);
+}
+
+.profil-img {
+  width: 30px;
+}
+
+.btn-show-form {
+  background-color: #ece3ce;
+  color: white;
+}
+
+.menu-input {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #739072;
+  padding: 10px;
+  border-radius: 30px;
+  color: white;
+}
+.menu-input button {
+  color: #739072;
+  width: 50%;
+  height: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 10px;
+}
+.menu-form {
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #00000099;
+  color: #00000099;
+  position: absolute;
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+#form-input {
+  height: 50%;
+  width: 50%;
+  border-radius: 30px;
+  background-color: #3a4d39;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  gap: 10px;
+  color: white;
+}
+
+#form-input > input {
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  padding-left: 10px;
+}
+#form-input button {
+  height: 30px;
+  border-radius: 10px;
+}
+
+.data-menu {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.belum-dikerjakan {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background-color: #4f6f52;
+  color: white;
+  gap: 10px;
+  padding: 10px;
+}
+.item-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  color: #3a4d39;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #ece3ce;
+  padding: 20px;
+
+  -webkit-box-shadow: -3px 6px 20px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -3px 6px 20px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: -3px 6px 20px -4px rgba(0, 0, 0, 0.75);
+}
+.belum-dikerjakan div h1 {
+  font-size: 14px;
+  margin: 0;
+}
+.sudah-dikerjakan {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background-color: #4f6f52;
+  color: white;
+  gap: 10px;
+  padding: 10px;
+}
+.sudah-dikerjakan div h1 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.actions button {
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: end;
+}
+
+/* Modal Delete */
+.delete-modal {
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #00000099;
+  color: #00000099;
+  position: absolute;
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.delete-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #3a4d39;
+  width: 40%;
+  height: 20%;
+  border-radius: 10px;
+}
+.delete-container h1 {
+  color: white !important;
+  font-size: 24px;
+}
+.action-delete {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.action-delete button {
+  border: none;
+  color: #4f6f52;
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 7px;
+}
+.action-delete button:active {
+  transform: scale(1.1);
+}
+.action-delete button:hover {
+  transform: scale(1.1);
+}
+
+#cancel-delete {
+  background-color: green;
+  color: white !important;
+}
+#yes-delete {
+  background-color: red;
+  color: white !important;
+}
+
+/* edit form */
+.edit-form {
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #00000099;
+  color: #00000099;
+  position: absolute;
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-list {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.print-btn {
+  display: flex;
+  justify-content: center;
+  padding: 7px;
+  transition: ease-in-out 0.3s;
+  background-color: white !important;
+  border-radius: 999px;
+}
+.print-btn:hover {
+  transform: scale(1.2);
+}
+
+.action-btn {
+  transition: ease-in-out 0.3s;
+}
+
+.action-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Profil Modal */
+
+.profil-modal-container {
+  position: absolute;
+  background-color: #4f6f52;
+  z-index: 999;
+  top: 0px;
+  right: 0;
+  margin: 0;
+  width: 140px;
+  border-bottom-left-radius: 40px;
+}
+.profil-modal {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  margin: 5px;
+}
+.profil-modal h1 {
+  font-size: 16px;
+  color: white !important;
+}
+.profil-modal a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: black;
+  border-radius: 99px;
+  padding-left: 5px;
+  padding-right: 5px;
+  transition: ease-in-out 0.2s;
+  gap: 4px;
+}
+.profil-modal a:hover {
+  transform: scale(1.2);
+}
+.profil-image {
+  width: 40px;
+  border: white solid;
+  border-radius: 50%;
+  padding: 5px;
+}

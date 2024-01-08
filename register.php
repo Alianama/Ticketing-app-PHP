@@ -37,23 +37,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Assets/Styles/login.css">
     <title>Register Page</title>
 </head>
 
 <body>
-    <div class="register">
-        <form action="" method="post">
+    <div class="login">
+        <form class="login-form" action="" method="post">
             <h1>Registrasi Akun</h1>
             <?php if (isset($error_message)) : ?>
             <p style="color: red;"><?php echo $error_message; ?></p>
             <?php endif; ?>
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" required>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
+            <input type="text" name="username" id="username" placeholder="Enter username" required>
+            <input type="password" name="password" id="password" placeholder="Enter password" required>
             <button type="submit">Register</button>
         </form>
-        <a href="login.php">Sudah punya akun? Login</a>
+        <a href="login.php">Sudah Punya akun?</a>
     </div>
 </body>
 
