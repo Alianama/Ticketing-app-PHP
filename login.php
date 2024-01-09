@@ -41,8 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login">
         <form class="login-form" action="" method="post">
             <h1>Selamat Datang!</h1>
-            <?php if (isset($error_message)) : ?>
-            <p style="color: red;"><?php echo $error_message; ?></p>
+            <?php if (isset($error_message)): ?>
+                <p style="color: red;">
+                    <?php echo $error_message; ?>
+                </p>
             <?php endif; ?>
             <input type="text" name="username" id="username" placeholder="Enter username" required>
             <input type="password" name="password" id="password" placeholder="Enter password" required>

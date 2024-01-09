@@ -28,7 +28,7 @@ $username = $_SESSION['username'];
         <div class="title">
             <img src="Assets/icon/artience.svg" alt="Artience" width="200px">
         </div>
-        <form class="search" action="">
+        <form class="search" action="post">
             <input type="text" name="Seacrh" id="search">
             <button type="submit"><img class="search-icon" src="Assets/Icon/serach.svg" width="20px"></button>
         </form>
@@ -50,8 +50,8 @@ $username = $_SESSION['username'];
             <div class="belum-dikerjakan" id="belum-dikerjakan">
                 <div class="header-list">
                     <h3>Belum Dikerjakan</h3>
-                    <a class="print-btn" href="print.php" target="blank"><img src="Assets/icon/print.svg" width="30px"
-                            alt="print"></a>
+                    <a class="print-btn" href="printuncomplete.php" target="blank"><img src="Assets/icon/print.svg"
+                            width="30px" alt="print"></a>
                 </div>
 
                 <?php
@@ -59,9 +59,9 @@ $username = $_SESSION['username'];
                 $result = $conn->query($selectQuery);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        
+
                         echo "<div class='item-list' id='" . $row["id"] . "'>" .
-                        "<h1 id='name-" . $row["id"] . "' value='" . $row["name"] . "'>" . $row["name"] . "</h1>" .
+                            "<h1 id='name-" . $row["id"] . "' value='" . $row["name"] . "'>" . $row["name"] . "</h1>" .
                             "<h1 id='kerusakan-" . $row["id"] . "' value='" . $row["kerusakan"] . "'>" . $row["kerusakan"] . "</h1> " .
                             "<h1 id='tanggal-" . $row["id"] . "' value='" . $row["date_update"] . "'>" . $row["date_update"] . "</h1> " .
                             "<div class='actions'> " .
@@ -73,27 +73,27 @@ $username = $_SESSION['username'];
                             "</form>" .
                             "</div>" .
                             "</div>";
+                    }
+                } else {
+                    echo "Tidak ada list Ticket";
                 }
-            } else {
-                echo "Tidak ada list Ticket";
-            }
-            ?>
+                ?>
 
             </div>
             <div class="sudah-dikerjakan" id="sudah-dikerjakan">
                 <div class="header-list">
                     <h3>Sudah Dikerjakan</h3>
-                    <a class="print-btn" href="print.php" target="blank"><img src="Assets/icon/print.svg" width="30px"
-                            alt="print"></a>
+                    <a class="print-btn" href="printcomplete.php" target="blank"><img src="Assets/icon/print.svg"
+                            width="30px" alt="print"></a>
                 </div>
                 <?php
-                
+
                 $selectQuery = "SELECT * FROM `ticket` WHERE `complete` = '1'";
                 $result = $conn->query($selectQuery);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='item-list' id='" . $row["id"] . "'>" .
-                        "<h1 id='name-" . $row["id"] . "' value='" . $row["name"] . "'>" . $row["name"] . "</h1>" .
+                            "<h1 id='name-" . $row["id"] . "' value='" . $row["name"] . "'>" . $row["name"] . "</h1>" .
                             "<h1 id='kerusakan-" . $row["id"] . "' value='" . $row["kerusakan"] . "'>" . $row["kerusakan"] . "</h1> " .
                             "<h1 id='tanggal-" . $row["id"] . "' value='" . $row["date_update"] . "'>" . $row["date_update"] . "</h1> " .
                             "<div class='actions'> " .
@@ -105,11 +105,11 @@ $username = $_SESSION['username'];
                             "</form>" .
                             "</div>" .
                             "</div>";
+                    }
+                } else {
+                    echo "Tidak ada list Ticket";
                 }
-            } else {
-                echo "Tidak ada list Ticket";
-            }
-            ?>
+                ?>
 
 
             </div>
@@ -160,9 +160,10 @@ $username = $_SESSION['username'];
     <div id="profil-modal-container" class="profil-modal-container" style="display: none;">
         <div class="profil-modal">
             <img class="profil-image" src="Assets/icon/profil-image.svg" alt="profil">
-            <h1><?php
+            <h1>
+                <?php
                 echo $active_user;
-                    ?>
+                ?>
             </h1>
             <a href="logout.php">logout<img src="Assets/icon/logout.svg" width="20px" alt=""></a>
         </div>

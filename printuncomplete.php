@@ -54,7 +54,7 @@ $html .= '<table>
 
 if ($result->num_rows > 0) {
 
-    $counter = 1; 
+    $counter = 1;
 
     while ($row = $result->fetch_assoc()) {
         $status = ($row['complete'] == 1) ? 'Selesai' : 'Belum Selesai';
@@ -66,7 +66,7 @@ if ($result->num_rows > 0) {
             <td>' . $row['date_update'] . '</td>
             <td>' . $status . '</td>
         </tr>';
-        
+
         $counter++;
     }
 } else {
