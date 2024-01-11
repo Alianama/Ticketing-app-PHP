@@ -1,12 +1,12 @@
 <?php
-require('koneksi.php');
+require('config/koneksi.php');
 
 session_start();
 
 $active_user = $_SESSION['username'];
 
 if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
+    header('Location: auth/login.php');
     exit;
 }
 
@@ -67,7 +67,7 @@ $username = $_SESSION['username'];
                             "<div class='actions'> " .
                             "<button type='button' class='action-btn delete-btn' id='delete-btn' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/delete.svg' alt='delete' width='30px'></button>" .
                             "<button type='button' class='action-btn edit-btn' id='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img id='" . $row["id"] . "'  src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
-                            "<form method='post' action='complete.php'>" .
+                            "<form method='post' action='pages/complete.php'>" .
                             "<input type='hidden' name='id' value='" . $row["id"] . "'>" .
                             "<button type='submit' class='action-btn complete-btn' name='complete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/complete.svg' alt='complete' width='30px'></button>" .
                             "</form>" .
@@ -99,7 +99,7 @@ $username = $_SESSION['username'];
                             "<div class='actions'> " .
                             "<button type='button' class='action-btn delete-btn' id='delete-btn' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/delete.svg' alt='delete' width='30px'></button>" .
                             "<button type='button' class='action-btn edit-btn' id='edit-btn' name='edit' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img id='" . $row["id"] . "'  src='Assets/icon/edit.svg' alt='edit' width='30px'></button>" .
-                            "<form method='post' action='uncomplete.php'>" .
+                            "<form method='post' action='pages/uncomplete.php'>" .
                             "<input type='hidden' name='id' value='" . $row["id"] . "'>" .
                             "<button type='submit' class='action-btn uncomplete-btn' name='uncomplete' style='background-color: #3a4d39; color: #ffffff; width:40px; height:40px; border: none; cursor: pointer;'><img src='Assets/icon/uncomplete.svg' alt='uncomplete' width='30px'></button>" .
                             "</form>" .
@@ -123,7 +123,7 @@ $username = $_SESSION['username'];
     </main>
 
     <div class="menu-form" id="menu-form" style="display: none;">
-        <form id="form-input" method="post" action="add.php">
+        <form id="form-input" method="post" action="pages/add.php">
             <label for="name">Masukan Nama</label>
             <input type="text" name="name" id="name" placeholder="Ali Purnama" required>
             <label for="kerusakan">Detail kerusakan</label>
@@ -134,7 +134,7 @@ $username = $_SESSION['username'];
         </form>
     </div>
     <div class="edit-form" id="edit-form" style="display: none;">
-        <form id="form-input" method="post" action="edit.php">
+        <form id="form-input" method="post" action="pages/edit.php">
             <input type="hiden" name="id" id="edit-id" style="display: none;">
             <label for="name">Masukan Nama</label>
             <input type="text" name="name" id="new-name">
@@ -149,7 +149,7 @@ $username = $_SESSION['username'];
     <div class="delete-modal" id="delete-modal" style="display: none;">
         <div class="delete-container">
             <h1>Delete This Ticket?</h1>
-            <form class="action-delete" method="post" action="delete.php" id="delete-form">
+            <form class="action-delete" method="post" action="pages/delete.php" id="delete-form">
                 <input type="hidden" name="id" id="delete-id">
                 <button type="button" id="cancel-delete">Cancel</button>
                 <button type="submit" id="yes-delete">Yes</button>
@@ -165,7 +165,7 @@ $username = $_SESSION['username'];
                 echo $active_user;
                 ?>
             </h1>
-            <a href="logout.php">logout<img src="Assets/icon/logout.svg" width="20px" alt=""></a>
+            <a href="auth/logout.php">logout<img src="Assets/icon/logout.svg" width="20px" alt=""></a>
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-require('koneksi.php');
+require('config/koneksi.php');
 
 $mpdf = new mPDF();
 

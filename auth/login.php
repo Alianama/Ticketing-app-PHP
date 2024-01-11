@@ -1,5 +1,5 @@
 <?php
-require('koneksi.php');
+require('../config/koneksi.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Login berhasil
             session_start();
             $_SESSION['username'] = $username;
-            header('Location: index.php');
+            header('Location: ../index.php');
             exit;
         } else {
             // Login gagal
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Assets/Styles/login.css">
+    <link rel="stylesheet" href="../Assets/Styles/login.css">
     <title>Login Page</title>
 </head>
 

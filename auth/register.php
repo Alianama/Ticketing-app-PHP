@@ -1,5 +1,5 @@
 <?php
-require('koneksi.php');
+require('../config/koneksi.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Assets/Styles/login.css">
+    <link rel="stylesheet" href="../Assets/Styles/login.css">
     <title>Register Page</title>
 </head>
 
@@ -45,8 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login">
         <form class="login-form" action="" method="post">
             <h1>Registrasi Akun</h1>
-            <?php if (isset($error_message)) : ?>
-            <p style="color: red;"><?php echo $error_message; ?></p>
+            <?php if (isset($error_message)): ?>
+                <p style="color: red;">
+                    <?php echo $error_message; ?>
+                </p>
             <?php endif; ?>
             <input type="text" name="username" id="username" placeholder="Enter username" required>
             <input type="password" name="password" id="password" placeholder="Enter password" required>
