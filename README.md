@@ -1,72 +1,72 @@
-# Ticketing System
+# Sistem Tiket
 
-**Ticketing System** is a simple application for managing tickets of tasks or issues that are either pending or completed. The application allows users to add, edit, delete, and view the list of tickets.
+**Sistem Tiket** adalah aplikasi sederhana untuk mengelola tiket dari tugas atau isu yang sedang menunggu atau sudah selesai. Aplikasi ini memungkinkan pengguna untuk menambahkan, mengedit, menghapus, dan melihat daftar tiket.
 
-## Features
+## Fitur
 
-1. **Add Ticket Data**
+1. **Tambahkan Data Tiket**
 
-   - Users can add ticket data by clicking the "+ Add Ticket" button.
-   - Each ticket includes information such as name, issue details, and date of the issue.
+   - Pengguna dapat menambahkan data tiket dengan mengeklik tombol "+ Tambah Tiket".
+   - Setiap tiket mencakup informasi seperti nama, detail isu, dan tanggal isu.
 
-2. **List of Pending Tickets**
+2. **Daftar Tiket yang Menunggu**
 
-   - Displays a list of tickets that are pending.
-   - Users can view, edit, delete, and mark tickets as completed in this list.
-   - Option to print the list of pending tickets is available.
+   - Menampilkan daftar tiket yang sedang menunggu.
+   - Pengguna dapat melihat, mengedit, menghapus, dan menandai tiket sebagai selesai dalam daftar ini.
+   - Opsi untuk mencetak daftar tiket yang sedang menunggu juga tersedia.
 
-3. **List of Completed Tickets**
+3. **Daftar Tiket yang Selesai**
 
-   - Displays a list of tickets that are completed.
-   - Users can view, edit, delete, and revert the status of tickets to pending.
+   - Menampilkan daftar tiket yang sudah selesai.
+   - Pengguna dapat melihat, mengedit, menghapus, dan membatalkan status tiket menjadi menunggu.
 
-4. **Ticket Search**
+4. **Pencarian Tiket**
 
-   - Users can search for tickets based on the name or other information.
+   - Pengguna dapat mencari tiket berdasarkan nama atau informasi lainnya.
 
-5. **User Profile**
-   - Displays the name of the currently active user.
-   - Users can log out.
+5. **Profil Pengguna**
+   - Menampilkan nama pengguna yang sedang aktif.
+   - Pengguna dapat logout.
 
-## How to Use
+## Cara Penggunaan
 
-1. **Add Ticket Data**
+1. **Tambahkan Data Tiket**
 
-   - Click the "+ Add Ticket" button in the "Add Data" section.
-   - Fill out the form with the appropriate ticket information.
-   - Click the "Submit" button to add the ticket.
+   - Klik tombol "+ Tambah Tiket" di bagian "Tambah Data".
+   - Isi formulir dengan informasi tiket yang sesuai.
+   - Klik tombol "Submit" untuk menambahkan tiket.
 
-2. **Edit Ticket**
+2. **Edit Tiket**
 
-   - In the list of pending or completed tickets, click the "Edit" button on the ticket you want to edit.
-   - Fill out the form with the new information.
-   - Click the "Update" button to save the changes.
+   - Di daftar tiket yang sedang menunggu atau sudah selesai, klik tombol "Edit" pada tiket yang ingin diedit.
+   - Isi formulir dengan informasi baru.
+   - Klik tombol "Update" untuk menyimpan perubahan.
 
-3. **Delete Ticket**
+3. **Hapus Tiket**
 
-   - In the list of pending or completed tickets, click the "Delete" button on the ticket you want to delete.
-   - Confirm the deletion by choosing "Yes" or "Cancel."
+   - Di daftar tiket yang sedang menunggu atau sudah selesai, klik tombol "Hapus" pada tiket yang ingin dihapus.
+   - Konfirmasi penghapusan dengan memilih "Ya" atau "Batal."
 
-4. **Mark as Completed**
+4. **Tandai Sebagai Selesai**
 
-   - In the list of pending tickets, click the "Complete" button on the ticket that is completed.
-   - The ticket will be moved to the list of completed tickets.
+   - Di daftar tiket yang sedang menunggu, klik tombol "Selesai" pada tiket yang sudah selesai.
+   - Tiket akan dipindahkan ke daftar tiket yang sudah selesai.
 
-5. **Revert to Pending**
+5. **Kembali ke Menunggu**
 
-   - In the list of completed tickets, click the "Uncomplete" button on the ticket you want to revert to pending.
-   - The ticket will be moved to the list of pending tickets.
+   - Di daftar tiket yang sudah selesai, klik tombol "Batalkan Selesai" pada tiket yang ingin dikembalikan ke menunggu.
+   - Tiket akan dipindahkan kembali ke daftar tiket yang sedang menunggu.
 
-6. **Ticket Search**
+6. **Pencarian Tiket**
 
-   - Enter keywords in the search box at the top of the page.
-   - Press the "Search" button or press "Enter" on the keyboard.
+   - Masukkan kata kunci dalam kotak pencarian di bagian atas halaman.
+   - Tekan tombol "Cari" atau tekan "Enter" pada keyboard.
 
 7. **Logout**
-   - Click the profile button in the top right corner.
-   - Select the "Logout" option to log out of the account.
+   - Klik tombol profil di sudut kanan atas.
+   - Pilih opsi "Logout" untuk keluar dari akun.
 
-## Folder Structure
+## Struktur Folder
 
 - assets/
   - icon/
