@@ -9,9 +9,7 @@ if (isset($_POST['id'])) {
     // Assuming you have columns named 'status' and 'completion_date'
     $query = "UPDATE ticket SET complete = 0 WHERE id = ? LIMIT 1";
     $stmt = $conn->prepare($query);
-
     $stmt->bind_param("i", $id);
-
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
