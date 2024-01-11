@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const deleteBtn = document.getElementsByClassName("delete-btn");
   const cancelDelete = document.getElementById("cancel-delete");
   const deleteIdInput = document.getElementById("delete-id");
-  console.log(deleteBtn);
 
   [...deleteBtn].forEach((element) => {
     element.addEventListener("click", function (event) {
@@ -55,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const newName = document.getElementById("new-name");
   const newKerusakan = document.getElementById("new-kerusakan");
   const newTanggal = document.getElementById("new-tanggal");
-  const oldName = document.getElementById("name");
 
   [...editBtn].forEach((element) => {
     element.addEventListener("click", function (event) {
@@ -88,7 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Profil Modal
-
   const profilBtn = document.getElementById("profil-btn");
   const profilModal = document.getElementById("profil-modal-container");
   const body = document.body;
